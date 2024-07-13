@@ -42,12 +42,12 @@ async function createAdminUserIfNotExists() {
                 admin: true
             });
 
-            console.log('Admin user criado.');
+            console.log('\x1b[32m%s\x1b[0m','Admin user criado.');
         } else {
-            console.log('Já existe users.');
+            console.log('\x1b[33m%s\x1b[0m','Já existe users.');
         }
     } catch (error) {
-        console.error('Error creating admin user:', error);
+        console.error('\x1b[31m%s\x1b[0m','Erro ao criar o user admin:', error);
     }
 }
 
