@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-const config = require('../service/config-service')
+const config = require('../service/config-service.js')
 
 // Configurações do banco de dados
 const dbName = config.DB_DATABASE;

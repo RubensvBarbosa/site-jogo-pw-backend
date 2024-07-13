@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const config = require('./service/config-service');
+const config = require('./service/config-service.js');
 const { checkAndCreateDatabase } = require('./database/createDatabase');
 const sequelize = require('./database/db');
 const app = express(); 
@@ -8,6 +8,10 @@ const User = require('./models/user-model');
 
 app.use(cors());
 app.use(express.json());
+
+//Routes
+const userRoute = require('./routes/user-route.js');
+app.use('/users', userRoute);
 
 const startServer = async () => {
     await checkAndCreateDatabase(); // Verifique e crie o banco de dados se necessário
