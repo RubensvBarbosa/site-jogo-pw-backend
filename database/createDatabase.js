@@ -17,7 +17,7 @@ const checkAndCreateDatabase = async () => {
             await connection.query(`CREATE DATABASE \`${dbName}\`;`);
             console.log('\x1b[32m%s\x1b[0m',`Database '${dbName}' criada com sucesso!`);
         } else {
-            console.log('\x1b[33m%s\x1b[0m',`Database '${dbName}' já existe. Criação de db ignorada.`);
+            console.log('\x1b[33m%s\x1b[0m',`Database '${dbName}' já existe. Não é preciso criar db.`);
         }
     } catch (err) {
         console.error('Erro criando a database:', err);

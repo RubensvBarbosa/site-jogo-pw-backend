@@ -19,7 +19,7 @@ const startServer = async () => {
     await sequelize.sync({ force: false }); // force: false para não recriar a tabela
 
     app.listen(config.PORT, function () {
-        console.log('\x1b[32m%s\x1b[0m',`App rodando -> http://localhost:${config.PORT}`);
+        console.log('\x1b[32m%s\x1b[0m',`Servidor rodando -> http://localhost:${config.PORT}`);
     });
 
 };
