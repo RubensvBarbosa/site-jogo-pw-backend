@@ -34,5 +34,15 @@ async function post(username, password, admin){
     return userCreated;
 };
 
+//GET PARA PEGAR TODOS USERS CRIADOS
+async function findAllUsers(){
+    const users = await User.findAll();
+    if(users.length === 0){
+        return false;
+    }else{
+        return users
+    }
+};
 
-module.exports = {sigIn, post, findUser };
+
+module.exports = {sigIn, post, findUser, findAllUsers };

@@ -1,5 +1,4 @@
-const config = require('../service/config-service');
-const {sigIn, post, findUser} = require('../service/user-service');
+const {sigIn, post, findUser, findAllUsers} = require('../service/user-service');
 
 //FAZER LOGIN
 const login = async ( req, res, next) => {
@@ -22,13 +21,21 @@ const create = async (req, res, next) => {
     const admin = await req.body.admin;
 
     if(await findUser(username)){
-        return res.status(400).json({ message: 'Username already exists' });
+        return res.status(400).json({ message: 'Já existe usuario cadastrado' });
     }else{
         const newUser = await post(username, password, admin)
         res.status(200).send(newUser)
     }
 };
 
+//GET PARA PEGAR TODOS USERS CRIADOS
+const getAllUsers = async (req, res, next) => {
+    if(await findAllUsers()){
+        const users = await findAllUsers();
+        res.status(200).send(users)
+    }else{
+        res.status(400).json({ message: 'Não existe usuarios cadastrados' });
+    }
+};
 
-
-module.exports = {login, create};
+module.exports = {login, create, getAllUsers};
