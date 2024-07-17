@@ -5,6 +5,7 @@ const { checkAndCreateDatabase } = require('./database/createDatabase');
 const sequelize = require('./database/db');
 const app = express(); 
 const User = require('./models/user-model');
+const Noticia = require('./models/noticia-model');
 
 app.use(cors());
 app.use(express.json());
@@ -12,6 +13,8 @@ app.use(express.json());
 //Routes
 const userRoute = require('./routes/user-route.js');
 app.use('/users', userRoute);
+const noticiaRoute = require('./routes/noticia-route.js')
+app.use('/noticia', noticiaRoute);
 
 const startServer = async () => {
     await checkAndCreateDatabase(); // Verifique e crie o banco de dados se necessário
