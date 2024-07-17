@@ -20,12 +20,17 @@ const create = async (req, res, next) => {
     const password = await req.body.password;
     const admin = await req.body.admin;
 
-    if(await findUser(username)){
-        return res.status(400).json({ message: 'Já existe usuario cadastrado' });
+    if(!username || !password){
+        return res.status(400).json({ message: 'Campos inválidos!' });
     }else{
-        const newUser = await post(username, password, admin)
-        res.status(200).send(newUser)
+        if(await findUser(username)){
+            return res.status(400).json({ message: 'Já existe usuario cadastrado' });
+        }else{
+            const newUser = await post(username, password, admin)
+            res.status(200).send(newUser)
+        }
     }
+
 };
 
 //GET PARA PEGAR TODOS USERS CRIADOS
